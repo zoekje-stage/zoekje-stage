@@ -1,53 +1,58 @@
+'use client';
+
+import { useState } from 'react';
+
 export default function Home() {
-  // Structured Data for SEO (JSON-LD)
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Zoek je stage",
-    "url": "https://zoekjestage.nl",
-    "description": "Platform om de perfecte stage te vinden op basis van jouw interesses",
-    "inLanguage": "nl-NL",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://zoekjestage.nl/zoeken?q={search_term_string}",
-      "query-input": "required name=search_term_string"
-    }
-  };
-
-  const organizationData = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Zoek je stage",
-    "url": "https://zoekjestage.nl",
-    "logo": "https://zoekjestage.nl/logo.png",
-    "description": "Zoek je stage helpt studenten de perfecte stage te vinden op basis van hun interesses",
-    "sameAs": [
-      "https://twitter.com/zoekjestage",
-      "https://linkedin.com/company/zoekjestage"
-    ]
-  };
-
   return (
     <>
-      {/* Structured Data */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationData) }}
-      />
+      <div 
+        className="min-h-screen relative overflow-hidden"
+        style={{
+          background: 'linear-gradient(to bottom, #E0F2FE 0%, #FEF9E7 50%, #FEF3C7 100%)'
+        }}
+      >
 
-      <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-        <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-          <header>
-            <h1 className="text-4xl font-bold">zoekjestage.nl</h1>
-            <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-400">
-              Vind de perfecte stage op basis van jouw interesses
+        {/* Navigation */}
+        <nav className="relative z-10 px-6 sm:px-8 py-6">
+          <div className="max-w-7xl mx-auto flex items-center justify-between">
+            <a href="/" className="font-semibold text-lg text-slate-900 hover:text-slate-700 transition-colors">
+              Home
+            </a>
+            <div className="flex items-center gap-8">
+              <a href="/stages" className="text-slate-700 hover:text-slate-900 font-medium transition-colors">
+                Stages
+              </a>
+            </div>
+          </div>
+        </nav>
+
+        {/* Main Content */}
+        <main className="relative z-10 flex items-center justify-center min-h-[85vh] px-6 sm:px-8">
+          <div className="max-w-4xl mx-auto text-center">
+            
+            {/* Main Heading */}
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold text-slate-900 tracking-tight leading-[1.1] mb-8">
+              Alle stages in Nederland,
+              <br />
+              op één plek
+            </h1>
+
+            {/* Subheading */}
+            <p className="text-xl sm:text-2xl text-slate-700 mb-16 max-w-3xl mx-auto leading-relaxed">
+              Stop met zoeken op tientallen websites. Wij verzamelen alle stageplekken voor jou.
             </p>
-          </header>
+
+          </div>
         </main>
+
+        {/* Footer */}
+        <footer className="relative z-10 py-8 border-t border-slate-200">
+          <div className="max-w-7xl mx-auto px-6 sm:px-8 text-center">
+            <p className="text-slate-600 text-sm">
+              © 2026 Zoek je stage • Alle rechten voorbehouden
+            </p>
+          </div>
+        </footer>
       </div>
     </>
   );

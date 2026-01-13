@@ -1,23 +1,24 @@
 # Brand Style Guide: Zoek je stage
-## Inspired by Uber's Bold, Modern Aesthetic
+## Minimalist, Clean & Focused
 
-**Last Updated:** January 2026
+**Last Updated:** January 2026  
+**Version:** 2.0 - Simplified Design
 
 ---
 
 ## Brand Essence
 
 ### Personality
-- **Bold** - Confident, direct, clear
-- **Modern** - Clean, minimal, tech-forward
-- **Accessible** - Friendly, student-focused, approachable
-- **Trustworthy** - Professional, reliable, transparent
+- **Minimal** - Less is more, focused on essentials
+- **Clean** - Uncluttered, breathing space, calm
+- **Modern** - Contemporary, fresh, tech-forward
+- **Approachable** - Student-friendly, simple, clear
 
 ### Voice & Tone
-- **Direct and Clear** - No jargon, straight to the point
-- **Confident but Friendly** - "We've got you" energy
-- **Empowering** - Focus on student's success
-- **Casual Professional** - Like talking to a smart friend
+- **Ultra Direct** - Say what matters, nothing more
+- **Simple** - Plain language, no fluff
+- **Calm** - Peaceful, not overwhelming
+- **Focused** - One goal: help find stages
 
 ---
 
@@ -27,25 +28,32 @@
 
 #### Primary Colors
 ```
-Electric Blue    #0066FF  - Primary brand color, CTAs, headers
-Vibrant Purple   #6366F1  - Secondary accent, gradients
-Deep Blue        #1E40AF  - Dark variation
-Light Blue       #EFF6FF  - Backgrounds, subtle areas
-White            #FFFFFF  - Clean space, cards
+Light Blue     #E0F2FE  - Top of gradient, soft sky blue
+Cream Yellow   #FEF9E7  - Middle gradient, subtle warmth
+Light Yellow   #FEF3C7  - Bottom gradient, gentle yellow
+Slate 900      #0f172a  - Text, buttons, accents
+White          #FFFFFF  - Cards, inputs
 ```
 
-#### Gradient (Signature Look)
+#### Signature Gradient (Subtle & Fixed)
 ```
-Primary Gradient: linear-gradient(135deg, #6366F1 0%, #0066FF 100%)
-Hero Gradient:    linear-gradient(to bottom right, #EFF6FF 0%, #DBEAFE 100%)
+Background: linear-gradient(to bottom, 
+  #E0F2FE 0%,    /* Light Blue top */
+  #FEF9E7 50%,   /* Cream middle */
+  #FEF3C7 100%   /* Light Yellow bottom */
+)
+
+Effect: Soft, calming, professional gradient
+No animation - clean and subtle
+Perfect for long reading sessions
 ```
 
 **Why This Palette:**
-- Bold and energetic (niet saai!)
-- Modern, tech-forward
-- Stands out from traditional job boards
-- Professional but vibrant
-- Great for students (young, dynamic)
+- Calming and professional
+- Easy on the eyes for long sessions
+- Modern and clean
+- Subtle but distinctive
+- Perfect for focused task (finding stages)
 
 #### Supporting Colors
 ```
@@ -127,61 +135,64 @@ Caption           12px       Medium (500)
 
 ## Design Principles
 
-### 1. **Bold Typography**
+### 1. **Extreme Simplicity**
 ```
 ✅ DO:
-- Use large, bold headlines (48px+)
-- High contrast (black on white)
-- Short, punchy headlines
-- Generous line height
+- Remove everything non-essential
+- One primary action per page
+- Minimal navigation
+- Maximum white space
 
 ❌ DON'T:
-- Small, timid text
-- Low contrast gray text for headers
-- Long paragraphs in large fonts
+- Add features "just in case"
+- Multiple CTAs competing
+- Unnecessary decorations
+- Complex navigation menus
 ```
 
-### 2. **Minimal & Clean**
+### 2. **Focus on Content**
 ```
 ✅ DO:
-- Remove unnecessary elements
-- Use white space generously
-- Simple, clear layouts
-- One focus per section
+- Large, clear headlines (72px+)
+- Short, direct copy
+- One message at a time
+- Let content breathe
 
 ❌ DON'T:
-- Cluttered interfaces
-- Too many colors
-- Decorative elements without purpose
-- Competing focal points
+- Long paragraphs
+- Multiple messages
+- Crowded layouts
+- Distracting elements
 ```
 
-### 3. **Strong Hierarchy**
+### 3. **Calm Aesthetics**
 ```
 ✅ DO:
-- Clear visual hierarchy
-- Size difference between heading levels
-- Use weight for emphasis
-- Guide the eye with spacing
+- Soft, subtle gradients
+- Generous spacing (96px+)
+- Light, airy feel
+- Peaceful color palette
 
 ❌ DON'T:
-- Similar sizing for different levels
-- Rely only on color for hierarchy
-- Confusing content order
+- Loud, flashy colors
+- Tight spacing
+- Heavy shadows
+- Aggressive designs
 ```
 
-### 4. **High Contrast**
+### 4. **Clear Hierarchy**
 ```
 ✅ DO:
-- Black text on white backgrounds
-- White text on black backgrounds
-- Vibrant accent color
-- Clear, readable text
+- Obvious primary action
+- Simple navigation
+- Clear text sizes
+- Intuitive flow
 
 ❌ DON'T:
-- Light gray on white
-- Low contrast combinations
-- Washed out colors
+- Equal visual weight
+- Hidden actions
+- Confusing structure
+- Unclear priority
 ```
 
 ---
@@ -488,30 +499,27 @@ Large:      > 1440px
 
 ## Website Structure
 
-### Navigation (Uber-style)
+### Navigation (Minimalist)
 ```
 ┌─────────────────────────────────────────┐
-│ [Logo]    Hoe werkt het?  Voor bedrijven │
-│                            [Inloggen] [Aanmelden] │
+│ Home                            Stages  │
 └─────────────────────────────────────────┘
 
-Simple, minimal, clear CTAs
+Ultra minimal - only essential links
+No buttons in nav - keeps it clean
 ```
 
-### Footer (Minimalist)
+### Footer (Ultra Minimal)
 ```
 ┌─────────────────────────────────────────┐
 │                                         │
-│ Product        Bedrijf      Support     │
-│ - Zoeken       - Over       - Help      │
-│ - Features     - Team       - Contact   │
-│                - Blog       - Privacy   │
+│   © 2026 Zoek je stage • Alle rechten  │
+│              voorbehouden               │
 │                                         │
-│ © 2026 Zoek je stage                   │
-│ [Social Icons]                          │
 └─────────────────────────────────────────┘
 
-Minimal, organized, not overwhelming
+One line - that's it
+No clutter, no distractions
 ```
 
 ---
@@ -521,37 +529,47 @@ Minimal, organized, not overwhelming
 ### Headlines
 ```
 ✅ DO:
-- Short and punchy (3-6 words)
-- Active voice
-- Benefit-focused
-- Direct language
+- Ultra short (2-5 words per line)
+- Crystal clear message
+- Simple language
+- Direct benefit
 
 ❌ DON'T:
-- Long, wordy headlines
-- Corporate jargon
-- Passive voice
-- Vague promises
+- Wordy explanations
+- Marketing speak
+- Clever wordplay
+- Multiple ideas
 ```
 
 **Examples:**
 ```
-Good: "Vind je stage in seconden"
-Bad:  "Ons innovatieve platform biedt uitgebreide mogelijkheden..."
+Perfect: "Alle stages in Nederland, op één plek"
+Bad:    "Het meest complete stageplatform van Nederland met..."
 
-Good: "Alle stages, één plek"
-Bad:  "Een platform waar je verschillende mogelijkheden..."
+Perfect: "Stop met zoeken"
+Bad:    "Optimaliseer je zoekervaring met onze innovatieve..."
 
-Good: "Mis geen enkele kans"
-Bad:  "Word geïnformeerd over relevante opportuniteiten"
+Perfect: "Vind je stage"
+Bad:    "Ontdek opportunities die perfect bij je profiel passen"
 ```
 
 ### Body Copy
 ```
-- Short paragraphs (2-3 lines)
-- Active voice
-- Student language (not corporate)
-- Scannable (use lists)
-- Clear, direct
+- One sentence, maximum two
+- Say it simply
+- No explanations needed
+- Every word counts
+- Plain Dutch
+```
+
+**Example:**
+```
+Perfect: "Stop met zoeken op tientallen websites. 
+          Wij verzamelen alle stageplekken voor jou."
+
+Bad:    "Ons platform aggregeert stage-opportuniteiten 
+         van verschillende bronnen en biedt een 
+         geïntegreerde zoekervaring..."
 ```
 
 ---
@@ -559,65 +577,77 @@ Bad:  "Word geïnformeerd over relevante opportuniteiten"
 ## Do's and Don'ts Summary
 
 ### ✅ DO
-- Use bold, large typography
-- Embrace white space
-- Keep it minimal
-- Use high contrast
-- Make CTAs prominent
-- Design mobile-first
-- Use real photography
-- Animate subtly
-- Focus on speed
-- Be direct in copy
+- Remove everything unnecessary
+- Use huge typography (72px+)
+- Embrace massive white space
+- One CTA per page
+- Subtle gradient background
+- Simple, clean forms
+- Direct, plain language
+- Focus on the one goal
+- Keep navigation minimal
+- Mobile-first always
 
 ### ❌ DON'T
-- Clutter the interface
-- Use too many colors
-- Make text too small
-- Rely on decorative elements
-- Use stock photo clichés
-- Over-animate
-- Use corporate jargon
-- Hide important actions
-- Complicate the layout
-- Try to show everything at once
+- Add features/sections
+- Use multiple colors
+- Show everything at once
+- Complex navigation
+- Marketing buzzwords
+- Decorative elements
+- Multiple CTAs
+- Long explanations
+- Busy layouts
+- Unnecessary content
 
 ---
 
-## Brand Applications
+## Current Implementation
 
-### Social Media
-- **Square Posts:** Bold text on solid backgrounds
-- **Stories:** Full-screen, minimal text overlay
-- **Profile Pictures:** Simple logo, high contrast
+### Landing Page Structure
+```
+1. Minimal Top Bar
+   - Home (left)
+   - Stages (right)
+   - No buttons, no logo clutter
 
-### Email
-- Plain text style or very minimal HTML
-- Bold subject lines
-- Short paragraphs
-- Clear single CTA
+2. Hero Section (centered, vertical)
+   - Huge headline (72-96px)
+   - One line subtext
+   - Email input + Button
+   - That's it
 
-### Print (if needed)
-- High contrast
-- Bold typography
-- Minimal design
-- QR codes for digital bridge
+3. Minimal Footer
+   - Copyright line
+   - Nothing else
+
+Total sections: 3
+Total actions: 1 (email signup)
+```
+
+### The Formula
+```
+Less Features = More Focus
+Less Text = More Impact
+Less Colors = More Calm
+Less Elements = More Clarity
+```
 
 ---
 
 ## Inspiration References
 
 ### Websites to Study
-- **Uber.com** - Overall aesthetic, hero sections
-- **Stripe.com** - Clean, developer-focused, bold
-- **Linear.app** - Minimal, fast, modern
-- **Vercel.com** - Typography, spacing, dark mode
-- **Pitch.com** - Bold colors, simple layouts
+- **Linear.app** - Extreme minimalism, focus
+- **Stripe.com** - Clean, clear, simple
+- **Hey.com** - Simple landing, one message
+- **Notion.so** - Clean layouts, calm colors
+- **Superhuman.com** - Minimal, focused
 
-### Design Systems
-- **Uber Design** - Movement, bold choices
-- **Stripe** - Balance, clarity
-- **Tailwind UI** - Modern components
+### Philosophy
+- **Less is More** - Dieter Rams
+- **Subtract, Don't Add** - Jobs
+- **One Thing Well** - Unix philosophy
 
 ---
 
@@ -632,7 +662,9 @@ Bad:  "Word geïnformeerd over relevante opportuniteiten"
 
 ---
 
-**Remember:** Like Uber, your brand should feel **confident, modern, and effortlessly simple**. Every design decision should make the user experience faster and clearer.
+**Remember:** Your brand is about **extreme simplicity and focus**. Before adding anything, ask: "Is this absolutely necessary?"
 
-**Questions?** Review Uber's website and ask: "Does this feel as bold and clear?"
+**The Test:** If you can remove it without losing clarity, remove it.
+
+**Core Principle:** One page, one goal, one action. Nothing more.
 
