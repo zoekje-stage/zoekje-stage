@@ -1,5 +1,11 @@
 'use client';
 
+import { Authenticated, Unauthenticated } from "convex/react";
+import { SignInButton, UserButton } from "@clerk/nextjs";
+import { useQuery } from "convex/react";
+import { api } from "../convex/_generated/api";
+
+
 export default function Home() {
   return (
     <>
@@ -9,6 +15,14 @@ export default function Home() {
           background: '#40dacf'
         }}
       >
+      <Authenticated>
+        <UserButton />
+        <p>Je bent ingelogd</p>
+      </Authenticated>
+      <Unauthenticated>
+        <p>Je bent niet ingelogd</p>
+        <SignInButton />
+      </Unauthenticated>
 
         {/* Navigation */}
         <nav className="relative z-10 px-6 sm:px-8 py-6">
