@@ -23,7 +23,11 @@ import {
   ImageIcon,
   X,
   ChevronLeft,
-  ChevronRight
+  ChevronRight,
+  Coins,
+  Tag,
+  Award,
+  Info
 } from 'lucide-react';
 import Link from 'next/link';
 
@@ -54,10 +58,28 @@ interface Internship {
   organisatie_grootte: string | null;
   organisatie_leerbedrijf_id: string | null;
   organisatie_omschrijving: string | null;
-  kerntaken: string[] | null;
-  kenmerken: string[] | null;
+  kerntaken: Array<{
+    code: string;
+    naam: string;
+    subtaken?: Array<{
+      code: string;
+      naam: string;
+      uitvoerbaar?: boolean;
+    }>;
+  }> | null;
+  kenmerken: Array<{
+    code?: string;
+    naam?: string;
+    waarde?: string | boolean;
+  }> | string[] | null;
   media: { url: string; type: string }[] | null;
-  vergoedingen: { type: string; amount: number }[] | null;
+  vergoedingen: Array<{
+    type?: string;
+    naam?: string;
+    bedrag?: number;
+    eenheid?: string;
+    omschrijving?: string;
+  }> | null;
   bedrag_van: number | null;
   bedrag_tot: number | null;
   kwalificatie_niveau: string | null;
@@ -452,9 +474,14 @@ export default function InternshipDetailPage() {
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-slate-700 whitespace-pre-line leading-relaxed">
-                      {internship.vaardigheden}
-                    </p>
+                    <ul className="space-y-2">
+                      {internship.vaardigheden.split('\n').filter(line => line.trim()).map((line, index) => (
+                        <li key={index} className="flex items-start gap-2 text-slate-700">
+                          <CheckCircle2 className="h-5 w-5 text-teal-500 shrink-0 mt-0.5" />
+                          {line.trim()}
+                        </li>
+                      ))}
+                    </ul>
                   </CardContent>
                 </Card>
               )}
@@ -469,34 +496,161 @@ export default function InternshipDetailPage() {
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-slate-700 whitespace-pre-line leading-relaxed">
-                      {internship.aanbieden}
-                    </p>
-                  </CardContent>
-                </Card>
-              )}
-
-              {/* Core Tasks */}
-              {internship.kerntaken && Array.isArray(internship.kerntaken) && internship.kerntaken.length > 0 && (
-                <Card className="bg-white/90 backdrop-blur border-slate-200/50">
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                      <Briefcase className="h-5 w-5 text-teal-600" />
-                      Kerntaken
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
                     <ul className="space-y-2">
-                      {internship.kerntaken.map((task, index) => (
+                      {internship.aanbieden.split('\n').filter(line => line.trim()).map((line, index) => (
                         <li key={index} className="flex items-start gap-2 text-slate-700">
-                          <CheckCircle2 className="h-5 w-5 text-teal-500 shrink-0 mt-0.5" />
-                          {typeof task === 'string' ? task : JSON.stringify(task)}
+                          <CheckCircle2 className="h-5 w-5 text-emerald-500 shrink-0 mt-0.5" />
+                          {line.trim()}
                         </li>
                       ))}
                     </ul>
                   </CardContent>
                 </Card>
               )}
+
+              {/* Core Tasks */}
+              {internship.kerntaken && (() => {
+                // Parse kerntaken if it's a string
+                let kerntakenData = internship.kerntaken;
+                if (typeof kerntakenData === 'string') {
+                  try {
+                    kerntakenData = JSON.parse(kerntakenData);
+                  } catch {
+                    return null;
+                  }
+                }
+                if (!Array.isArray(kerntakenData) || kerntakenData.length === 0) return null;
+
+                return (
+                  <Card className="bg-white/90 backdrop-blur border-slate-200/50">
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2">
+                        <Briefcase className="h-5 w-5 text-teal-600" />
+                        Kerntaken
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-6">
+                      {kerntakenData.map((task, index) => (
+                        <div key={index}>
+                          {/* Main task */}
+                          <div className="flex items-start gap-2 mb-3">
+                            <CheckCircle2 className="h-5 w-5 text-teal-500 shrink-0 mt-0.5" />
+                            <div>
+                              <span className="text-xs font-mono text-slate-400 block">{task.code}</span>
+                              <span className="font-medium text-slate-900">{task.naam}</span>
+                            </div>
+                          </div>
+                          
+                          {/* Subtasks */}
+                          {task.subtaken && task.subtaken.length > 0 && (
+                            <ul className="ml-7 space-y-2 border-l-2 border-slate-200 pl-4">
+                              {task.subtaken.map((subtask, subIndex) => (
+                                <li key={subIndex} className="flex items-start gap-2 text-slate-600 text-sm">
+                                  <CheckCircle2 className={`h-4 w-4 shrink-0 mt-0.5 ${subtask.uitvoerbaar ? 'text-emerald-500' : 'text-slate-300'}`} />
+                                  <div>
+                                    <span className="text-xs font-mono text-slate-400">{subtask.code}</span>
+                                    <span className="ml-2">{subtask.naam}</span>
+                                  </div>
+                                </li>
+                              ))}
+                            </ul>
+                          )}
+                        </div>
+                      ))}
+                    </CardContent>
+                  </Card>
+                );
+              })()}
+
+              {/* Compensations / Vergoedingen */}
+              {internship.vergoedingen && (() => {
+                // Parse vergoedingen if it's a string
+                let vergoedingData = internship.vergoedingen;
+                if (typeof vergoedingData === 'string') {
+                  try {
+                    vergoedingData = JSON.parse(vergoedingData);
+                  } catch {
+                    return null;
+                  }
+                }
+                if (!Array.isArray(vergoedingData) || vergoedingData.length === 0) return null;
+
+                return (
+                  <Card className="bg-white/90 backdrop-blur border-slate-200/50">
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2">
+                        <Coins className="h-5 w-5 text-emerald-600" />
+                        Vergoedingen
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="space-y-3">
+                        {vergoedingData.map((item, index) => (
+                          <div key={index} className="flex items-start gap-3 p-3 rounded-lg bg-emerald-50">
+                            <Euro className="h-5 w-5 text-emerald-600 shrink-0 mt-0.5" />
+                            <div className="flex-1">
+                              <span className="font-medium text-slate-900">
+                                {item.omschrijving || 'Vergoeding'}
+                              </span>
+                              {item.bedrag !== undefined && item.bedrag !== null && (
+                                <span className="ml-2 text-emerald-700 font-semibold">
+                                  €{item.bedrag}
+                                  {item.eenheid && <span className="text-slate-500 font-normal"> / {item.eenheid}</span>}
+                                </span>
+                              )}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </CardContent>
+                  </Card>
+                );
+              })()}
+
+              {/* Kenmerken / Characteristics */}
+              {internship.kenmerken && (() => {
+                // Parse kenmerken if it's a string
+                let kenmerkenData = internship.kenmerken;
+                if (typeof kenmerkenData === 'string') {
+                  try {
+                    kenmerkenData = JSON.parse(kenmerkenData);
+                  } catch {
+                    return null;
+                  }
+                }
+                if (!Array.isArray(kenmerkenData) || kenmerkenData.length === 0) return null;
+
+                return (
+                  <Card className="bg-white/90 backdrop-blur border-slate-200/50">
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2">
+                        <Tag className="h-5 w-5 text-teal-600" />
+                        Kenmerken
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="flex flex-wrap gap-2">
+                        {kenmerkenData.map((item, index) => {
+                          // Handle both string items and object items
+                          const label = typeof item === 'string' 
+                            ? item 
+                            : (item.naam || item.waarde || item.code || JSON.stringify(item));
+                          
+                          return (
+                            <Badge 
+                              key={index} 
+                              variant="secondary" 
+                              className="bg-slate-100 text-slate-700 border-0 px-3 py-1"
+                            >
+                              {label}
+                            </Badge>
+                          );
+                        })}
+                      </div>
+                    </CardContent>
+                  </Card>
+                );
+              })()}
 
               {/* Company Description */}
               {internship.organisatie_omschrijving && (
@@ -581,6 +735,17 @@ export default function InternshipDetailPage() {
                     </div>
                   )}
 
+                  {/* Number of positions */}
+                  {internship.aantal && internship.aantal > 0 && (
+                    <div className="flex items-start gap-3">
+                      <Users className="h-5 w-5 text-slate-400 shrink-0 mt-0.5" />
+                      <div>
+                        <span className="text-sm text-slate-500">Beschikbare plekken</span>
+                        <p className="text-slate-900">{internship.aantal} {internship.aantal === 1 ? 'plek' : 'plekken'}</p>
+                      </div>
+                    </div>
+                  )}
+
                   {/* Company Size */}
                   {internship.organisatie_grootte && (
                     <div className="flex items-start gap-3">
@@ -588,6 +753,17 @@ export default function InternshipDetailPage() {
                       <div>
                         <span className="text-sm text-slate-500">Bedrijfsgrootte</span>
                         <p className="text-slate-900">{internship.organisatie_grootte}</p>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* SBB Leerbedrijf Registration */}
+                  {internship.organisatie_leerbedrijf_id && (
+                    <div className="flex items-start gap-3">
+                      <Award className="h-5 w-5 text-slate-400 shrink-0 mt-0.5" />
+                      <div>
+                        <span className="text-sm text-slate-500">SBB Erkend leerbedrijf</span>
+                        <p className="text-slate-900 font-mono text-sm">{internship.organisatie_leerbedrijf_id}</p>
                       </div>
                     </div>
                   )}
